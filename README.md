@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 # Base-de-Datos-con-Excel-MACC
+=======
+# Base-de-Datos-con-Excel-MACC
+
+Según la Real Academia Española se considera el concepto de ganadería como la “crianza o comercio de ganados”, es decir, cualquier acción que tenga involucrado el tratamiento con animales para el alimento del ser humano. En este proyecto se enfocará en el manejo del ganado bovino para la ceba. 
+Se ha identificado cierta preocupación por parte de los trabajadores de este sector en cuanto a la falta de recursos que tienen para la organización de las fincas, pues es de entender que deben manejar numerosas cantidades de animales y resulta tediosa la recolección de información de cada uno de ellos. Por otro lado, existen ciertas herramientas, como lo es el “software GANADERO” que les permite crear una base de datos sobre los grupos con los que están laborando, pero esta ayuda requiere de una suma de dinero que no todos pueden dar para su uso.
+Por lo tanto, con el presente proyecto se pretende crear un software hecho en java, que ayude con la organización de todos los datos de un grupo de ganado. Esto se desea alcanzar mediante la creación de una interfaz que sea de fácil manejo para los usuarios, con el fin de obtener una mejor interacción y que se sientan libres de usar el programa sin complicaciones, para que puedan ingresar cada uno de los datos necesarios para poner en orden la información y sea menos difícil el trabajo de administración. 
+Inicialmente se busca que el usuario ingrese los contenidos indispensables para la elaboración de la base de datos tales como el número del animal, el sexo, el peso, la raza y/o el color del ganado a trabajar. Para lograr la acumulación de esta información el programa va a necesitar identificar la finca sobre la cual se requieren los datos, luego la actividad que se desea hacer con los animales de esa finca ya sea para hacer una simple consulta de uno de ellos, por ejemplo, si el cliente desea hacer la búsqueda de un animal solo tendrá de que ingresar el número de éste en un botón de búsqueda e inmediatamente se mostrará lo que se conoce de él. También existirá la posibilidad de renovar el inventario que normalmente se hace de manera mensual; o la creación de un documento que contenga los datos principales ya sea para la compra, venta o incluso la muerte de un animal, en este último caso es necesario identificar si la información del animal fallecido se desea guardar o si se elimina por completo del sistema. 
+Una vez completados los datos y puestos en el sistema se aspira crear un archivo en Excel que permita tenerlos arreglados para un optimo manejo a la hora de administrar las fincas.
+
+
+>>>>>>> origin/master
