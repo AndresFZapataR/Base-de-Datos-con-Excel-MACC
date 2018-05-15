@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# Base-de-Datos-con-Excel-MACC
-=======
+
 # Base-de-Datos-con-Excel-MACC
 
 Según la Real Academia Española se considera el concepto de ganadería como la “crianza o comercio de ganados”, es decir, cualquier acción que tenga involucrado el tratamiento con animales para el alimento del ser humano. En este proyecto se enfocará en el manejo del ganado bovino para la ceba. 
