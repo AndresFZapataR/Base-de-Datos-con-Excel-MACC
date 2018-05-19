@@ -30,7 +30,7 @@ public class ReadExcel {
 
 				int numFilas = hoja.getLastRowNum(); //lee el numero de filas
 
-				for(int i = 0; i < numFilas; i++) {
+				for(int i = 1; i < numFilas; i++) {
 					Row fila = hoja.getRow(i);
 					int numceldas = fila.getLastCellNum(); //lee el numero de celdas en la fila i
 
