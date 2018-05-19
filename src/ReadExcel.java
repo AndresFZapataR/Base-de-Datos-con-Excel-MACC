@@ -9,38 +9,39 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcel {
-	
+
 		/**
 		 * Metodo que lee la informacion de las celdas de un archivo de Excel (.xlsx)
-		 * y guarda esa informacion dentro de un Vector 
-		 * @param ruta Path del archivo .xlsx a leer
+		 * y guarda esa informacion dentro de un Vector
+		 * @param fileName nombre del archivo .xlsx a leer
+		 * @param sheetName nombre del potrero
 		 * @return Vector con la informacion de las celdas;
 		 */
-	public Vector <Cell> leer(String ruta) {
-			
+	public  Vector <Cell> leer(String fileName, String sheetName) {
+
 		Vector<Cell> data = new Vector<Cell>();
-	
+
 		try {
-			File file = new File(ruta);
+			File file = new File(fileName);
 			FileInputStream excel = new FileInputStream(file);
 			try {
 				XSSFWorkbook workbook = new XSSFWorkbook(excel); // abre el archivo
-				XSSFSheet hoja = workbook.getSheetAt(0); // abre la primera hoja
-					
+				XSSFSheet hoja = workbook.getSheet(sheetName); // abre la hoja correspondiente al potrero
+
 				int numFilas = hoja.getLastRowNum(); //lee el numero de filas
-					
+
 				for(int i = 0; i < numFilas; i++) {
 					Row fila = hoja.getRow(i);
 					int numceldas = fila.getLastCellNum(); //lee el numero de celdas en la fila i
-						
+
 					for (int x = 0; x < numceldas; x++) {
 						Cell celda = fila.getCell(x);
 						data.add(celda);
 						}
 					}
-					
+
 				workbook.close(); // cierra el archivo
-					
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -48,7 +49,6 @@ public class ReadExcel {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-			
 		return data;
 	}
 
