@@ -1,4 +1,4 @@
-package abs;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;

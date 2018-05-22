@@ -1,4 +1,4 @@
-package abs;
+
 public class DatosUsuario {
 	
 	String usuario1="";

@@ -1,4 +1,4 @@
-package abs;
+
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
