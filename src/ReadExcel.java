@@ -1,3 +1,5 @@
+
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,7 +19,7 @@ public class ReadExcel {
 		 * @param sheetName nombre del potrero
 		 * @return Vector con la informacion de las celdas;
 		 */
-	public  Vector <Cell> leer(String fileName, String sheetName) {
+	public  Vector <Cell> leerDatos(String fileName, String sheetName) {
 
 		Vector<Cell> data = new Vector<Cell>();
 
@@ -50,6 +52,48 @@ public class ReadExcel {
 			e.printStackTrace();
 		}
 		return data;
+	}
+	
+	public static int getNumSheet(String landName){
+		int tam = 0;
+		try {
+			File file = new File(landName);
+			FileInputStream excel = new FileInputStream(file);
+			try {
+				XSSFWorkbook workbook = new XSSFWorkbook(excel);
+				tam = workbook.getNumberOfSheets();
+				
+				workbook.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return tam;
+	}
+	
+	public static String[] getPaddocks(String landName) {
+		int tam = getNumSheet(landName);
+		String[] paddocks = new String[tam];
+		try {
+			File file = new File(landName);
+			FileInputStream excel = new FileInputStream(file);
+			try {
+				XSSFWorkbook workbook = new XSSFWorkbook(excel);
+				for(int i = 1; i < tam; i++) {
+					paddocks[i] = workbook.getSheetName(i);
+				}
+				workbook.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return paddocks;
 	}
 
 }

@@ -21,7 +21,7 @@ public class CrearDocExcel {
 	public static void editarPotrero (String landName, String paddockName, Vector<String> v) {
 		System.out.println(v);
 		try {
-			File file = new File(landName + ".xlsx");
+			File file = new File(landName);
 			FileInputStream excel = new FileInputStream(file);
 			try {
 				XSSFWorkbook book = new XSSFWorkbook(excel);
@@ -37,7 +37,7 @@ public class CrearDocExcel {
 					}
 					x++;
 				}
-				FileOutputStream salida = new FileOutputStream(landName + ".xlsx");
+				FileOutputStream salida = new FileOutputStream(landName);
 				book.write(salida);
 				excel.close();
 				book.close();
@@ -62,28 +62,10 @@ public class CrearDocExcel {
 		return v;
 	}
 
-	public static void crearFinca(String landName) {
-		XSSFWorkbook book = new XSSFWorkbook();
-		try {
-			FileOutputStream excel = new FileOutputStream(landName + ".xlsx");
-			book.write(excel);
-			try {
-				book.close();
-				excel.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-	} catch (IOException e) {
-			e.printStackTrace();
-			e.printStackTrace();
-		}
-	}
-	
 	public static void crearPotrero(String nameLand,String paddockName) {
 		Vector<String> ers = encabezado();
 		try {
-			FileInputStream file = new FileInputStream(new File(nameLand + ".xlsx"));
+			FileInputStream file = new FileInputStream(new File(nameLand ));
 			try {
 				XSSFWorkbook book = new XSSFWorkbook(file);
 				Sheet hoja = book.createSheet(paddockName);
@@ -91,7 +73,7 @@ public class CrearDocExcel {
 				for (int i = 0; i < NUM_COLUMS; i++) {
 					row.createCell(i).setCellValue(ers.get(i));					
 				}
-				FileOutputStream file2 = new FileOutputStream(new File (nameLand + ".xlsx"));
+				FileOutputStream file2 = new FileOutputStream(new File (nameLand));
 				book.write(file2);
 				book.close();
 				file.close();
@@ -104,4 +86,26 @@ public class CrearDocExcel {
 		}
 	}
 	
+	public static void deletePaddock(String landName, String paddockName) {
+		
+		try {
+			File file = new File(landName);
+			FileInputStream excel = new FileInputStream(file);
+			try {
+				XSSFWorkbook book = new XSSFWorkbook(excel);
+				int sheet = book.getSheetIndex(paddockName);
+				book.removeSheetAt(sheet);
+				FileOutputStream salida = new FileOutputStream(landName);
+				book.write(salida);
+				excel.close();
+				book.close();
+				salida.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

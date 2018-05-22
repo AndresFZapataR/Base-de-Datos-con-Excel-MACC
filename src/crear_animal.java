@@ -1,35 +1,32 @@
 
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import org.apache.poi.ss.usermodel.Cell;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class crear_animal extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
 	public Vector<String> data = new Vector<String>();
 	
-
 	private JPanel contentPane;
 	private JTextField txtFecha;
 	private JTextField txtanimal;
 	private JTextField txtpeso;
 	private JTextField txtraza;
-	private JTextField txtsexo;
 	private JTextField txtcolor;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,9 +40,6 @@ public class crear_animal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public crear_animal() {
 		setTitle("CREAR ANIMAL");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,11 +69,16 @@ public class crear_animal extends JFrame {
 		lblColor.setBounds(240, 75, 46, 14);
 		contentPane.add(lblColor);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "H", "M"}));
+		comboBox.setBounds(315, 32, 68, 20);
+		contentPane.add(comboBox);
+		
 		JButton btnAgregar = new JButton("AGREGAR ANIMAL");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				data.addElement(txtanimal.getText());
-				data.addElement(txtsexo.getText());
+				data.addElement(comboBox.getSelectedItem().toString());
 				data.addElement(txtpeso.getText());
 				data.addElement(txtraza.getText());
 				data.addElement(txtcolor.getText());
@@ -88,7 +87,6 @@ public class crear_animal extends JFrame {
 				txtcolor.setText("");
 				txtraza.setText("");
 				txtpeso.setText("");
-				txtsexo.setText("");
 				txtanimal.setText("");
 				txtFecha.setText("");
 				
@@ -100,7 +98,7 @@ public class crear_animal extends JFrame {
 		JButton btnGuardarCambios = new JButton("GUARDAR CAMBIOS ");
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrearDocExcel.editarPotrero(crear_finca.getNewLand(), crear_potrero.getNewPaddock(), data );
+				CrearDocExcel.editarPotrero(Principal.NOM_FINCA , crear_potrero.getNewPaddock(), data );
 			}
 		});
 		btnGuardarCambios.setBounds(250, 190, 133, 23);
@@ -130,15 +128,10 @@ public class crear_animal extends JFrame {
 		contentPane.add(txtraza);
 		txtraza.setColumns(10);
 		
-		txtsexo = new JTextField();
-		txtsexo.setBounds(310, 32, 86, 20);
-		contentPane.add(txtsexo);
-		txtsexo.setColumns(10);
-		
 		txtcolor = new JTextField();
 		txtcolor.setBounds(310, 72, 86, 20);
 		contentPane.add(txtcolor);
 		txtcolor.setColumns(10);
+		
 	}
-	
 }

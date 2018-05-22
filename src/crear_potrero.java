@@ -12,12 +12,10 @@ import java.awt.event.ActionListener;
 
 public class crear_potrero extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -31,11 +29,8 @@ public class crear_potrero extends JFrame {
 		});
 	
 	}
-	final crear_animal crearanimal = new crear_animal ();
+	
 
-	/**
-	 * Create the frame.
-	 */
 	public crear_potrero() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 322, 189);
@@ -56,17 +51,16 @@ public class crear_potrero extends JFrame {
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nameland = crear_finca.getNewLand();
 				String paddockname = textField.getText();
-				CrearDocExcel.crearPotrero(nameland,paddockname);
-				crearanimal.setVisible(true);
+				CrearDocExcel.crearPotrero(Principal.NOM_FINCA, paddockname);
+				final ventana_potreros regreso = new ventana_potreros();
+				regreso.setVisible(true);
 				dispose();
 			}
 		});
 
 		btnCrear.setBounds(118, 93, 89, 23);
 		contentPane.add(btnCrear);
-				
 	}
 	
 	public static String getNewPaddock() {

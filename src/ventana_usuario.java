@@ -31,7 +31,6 @@ public class ventana_usuario extends JFrame {
 		});
 	}
 
-
 	public ventana_usuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -58,7 +57,7 @@ public class ventana_usuario extends JFrame {
 		contentPane.add(pss_contrasena);
 		
 		final DatosUsuario data= new DatosUsuario();
-		final ventana_fincas ventanaFinca= new ventana_fincas();
+		final ventana_potreros ventanaPotreros= new ventana_potreros();
 		final ventana_nuevoU ventanacrear = new ventana_nuevoU();
 		
 		
@@ -68,7 +67,7 @@ public class ventana_usuario extends JFrame {
 				
 				if(data.probarPass()==1) {
 				   JOptionPane.showMessageDialog(null,"Bienvenido usuario");
-				   ventanaFinca.setVisible(true);
+				   ventanaPotreros.setVisible(true);
 				   dispose();
 				   
 				}

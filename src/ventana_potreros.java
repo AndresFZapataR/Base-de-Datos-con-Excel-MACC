@@ -1,9 +1,8 @@
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,14 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class ventana_potreros extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,7 +48,6 @@ public class ventana_potreros extends JFrame {
 		lblSeleccionePotrero.setBounds(146, 11, 142, 24);
 		contentPane.add(lblSeleccionePotrero);
 		
-		
 		cmbPotrero.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (!cmbPotrero.getSelectedItem().toString().equals("")) {
@@ -59,18 +58,43 @@ public class ventana_potreros extends JFrame {
 			
 		});
 			
-		cmbPotrero.setModel(new DefaultComboBoxModel(new String[] {"","Potrero 1", "Potrero 2", "Potrero 3"}));
+		cmbPotrero.setModel(new DefaultComboBoxModel(ReadExcel.getPaddocks(Principal.NOM_FINCA)));
 		cmbPotrero.setBounds(134, 46, 148, 24);
 		contentPane.add(cmbPotrero);
 		
 		
-		JButton btnAadirPotrero = new JButton("AGREGAR POTRERO");
-		btnAadirPotrero.setBounds(49, 175, 135, 24);
-		contentPane.add(btnAadirPotrero);
+		JButton btnAnadirPotrero = new JButton("AGREGAR POTRERO");
+		btnAnadirPotrero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				final crear_potrero ventana = new crear_potrero();
+				ventana.setVisible(true);
+				dispose();
+			}
+		});
+		btnAnadirPotrero.setBounds(49, 175, 135, 24);
+		contentPane.add(btnAnadirPotrero);
 		
 		JButton btnEliminarPotrero = new JButton("ELIMINAR POTRERO");
+		btnEliminarPotrero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CrearDocExcel.deletePaddock(Principal.NOM_FINCA, cmbPotrero.getSelectedItem().toString());
+				final ventana_potreros  ventana = new ventana_potreros();
+				ventana.setVisible(true);
+				dispose();
+			}
+		});
 		btnEliminarPotrero.setBounds(223, 175, 142, 24);
 		contentPane.add(btnEliminarPotrero);
+		
+		JButton btnEditarPotrero = new JButton("EDITAR POTRERO");
+		btnEditarPotrero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final crear_animal crearanimal = new crear_animal ();
+				crearanimal.setVisible(true);
+			}
+		});
+		btnEditarPotrero.setBounds(135, 215, 135, 23);
+		contentPane.add(btnEditarPotrero);
 	}
 	
 	public static String selectedPaddock() {
