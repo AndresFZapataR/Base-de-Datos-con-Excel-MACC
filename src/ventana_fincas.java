@@ -1,3 +1,4 @@
+package abs;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -15,7 +16,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ventana_fincas extends JFrame {
-
 	private JPanel contentPane;
 
 	public static void main(String[] args) {
@@ -30,12 +30,14 @@ public class ventana_fincas extends JFrame {
 			}
 		});
 	}
+	
+	final crear_finca crearFinca = new crear_finca();
 
 
 	public ventana_fincas() {
 		setTitle("FINCAS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 432, 382);
+		setBounds(100, 100, 432, 224);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -53,12 +55,11 @@ public class ventana_fincas extends JFrame {
 	
 		
 		listaFincas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				if (listaFincas.getSelectedItem().toString().equals("FINCA 1")) {
-					final ventana_potrero potrerosFinca1 = new ventana_potrero();
+	
+			public void mouseClicked(MouseEvent e) {
+				if (!listaFincas.getSelectedItem().toString().equals("")) {
+					final ventana_potreros potrerosFinca1 = new ventana_potreros();
 					potrerosFinca1.setVisible(true);
-					dispose();
 				}
 			}
 		});
@@ -66,13 +67,17 @@ public class ventana_fincas extends JFrame {
 		JButton btnCrearFinca = new JButton("NUEVA FINCA");
 		btnCrearFinca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				crearFinca.setVisible(true);
+				dispose();
+				
+				
 			}
 		});
-		btnCrearFinca.setBounds(55, 229, 134, 23);
+		btnCrearFinca.setBounds(50, 130, 134, 23);
 		contentPane.add(btnCrearFinca);
 		
 		JButton btnEliminarFinca = new JButton("ELIMINAR FINCA");
-		btnEliminarFinca.setBounds(208, 229, 146, 23);
+		btnEliminarFinca.setBounds(209, 130, 146, 23);
 		contentPane.add(btnEliminarFinca);
 	}
 }
