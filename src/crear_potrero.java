@@ -39,7 +39,7 @@ public class crear_potrero extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNombrePotrero = new JLabel("Nombre potrero");
-		lblNombrePotrero.setBounds(32, 25, 89, 22);
+		lblNombrePotrero.setBounds(40, 25, 100, 25);
 		contentPane.add(lblNombrePotrero);
 
 		textField = new JTextField();
