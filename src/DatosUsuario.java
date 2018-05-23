@@ -1,11 +1,12 @@
 
 public class DatosUsuario {
-	
+
 	String usuario1="";
 	String pass1="";
-	String User =  ventana_nuevoU.crearU();
-	String Pass =  ventana_nuevoU.crearP();
-	
+	String[] userData = ReadExcel.readUserData();
+	String User =  userData[0];
+	String Pass =  userData[1];
+
 	public int probarPass(){
 		usuario1= ventana_usuario.txt_usuario.getText();
 		pass1= ventana_usuario.pss_contrasena.getText();
@@ -18,5 +19,5 @@ public class DatosUsuario {
 		return key;
 	}
 
-	
+
 }

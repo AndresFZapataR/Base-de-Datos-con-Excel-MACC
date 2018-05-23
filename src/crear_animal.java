@@ -1,6 +1,4 @@
 
-
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,7 +17,7 @@ public class crear_animal extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public Vector<String> data = new Vector<String>();
-	
+
 	private JPanel contentPane;
 	private JTextField txtFecha;
 	private JTextField txtanimal;
@@ -48,32 +46,32 @@ public class crear_animal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNoAnimal = new JLabel("No Animal:");
 		lblNoAnimal.setBounds(10, 27, 78, 31);
 		contentPane.add(lblNoAnimal);
-		
+
 		JLabel lblPeso = new JLabel("Peso:");
 		lblPeso.setBounds(10, 75, 46, 14);
 		contentPane.add(lblPeso);
-		
+
 		JLabel lblRaza = new JLabel("Raza:");
 		lblRaza.setBounds(10, 113, 46, 14);
 		contentPane.add(lblRaza);
-		
+
 		JLabel lblSexo = new JLabel("Sexo:");
 		lblSexo.setBounds(240, 35, 46, 14);
 		contentPane.add(lblSexo);
-		
+
 		JLabel lblColor = new JLabel("Color:");
 		lblColor.setBounds(240, 75, 46, 14);
 		contentPane.add(lblColor);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "H", "M"}));
 		comboBox.setBounds(315, 32, 68, 20);
 		contentPane.add(comboBox);
-		
+
 		JButton btnAgregar = new JButton("AGREGAR ANIMAL");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -83,55 +81,57 @@ public class crear_animal extends JFrame {
 				data.addElement(txtraza.getText());
 				data.addElement(txtcolor.getText());
 				data.addElement(txtFecha.getText());
-				System.out.println(data);
 				txtcolor.setText("");
 				txtraza.setText("");
 				txtpeso.setText("");
 				txtanimal.setText("");
 				txtFecha.setText("");
-				
+
 			}
 		});
 		btnAgregar.setBounds(54, 190, 133, 23);
 		contentPane.add(btnAgregar);
-		
+
 		JButton btnGuardarCambios = new JButton("GUARDAR CAMBIOS ");
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrearDocExcel.editarPotrero(Principal.NOM_FINCA , crear_potrero.getNewPaddock(), data );
+				CrearDocExcel.editarPotrero(Principal.NOM_FINCA , ventana_potreros.selectedPaddock() , data );
+				final ventana_potreros ventana = new ventana_potreros();
+				ventana.setVisible(true);
+				dispose();
 			}
 		});
 		btnGuardarCambios.setBounds(250, 190, 133, 23);
 		contentPane.add(btnGuardarCambios);
-		
+
 		JLabel lblFecha = new JLabel("Fecha:");
 		lblFecha.setBounds(240, 113, 46, 14);
 		contentPane.add(lblFecha);
-		
+
 		txtFecha = new JTextField();
 		txtFecha.setBounds(310, 110, 86, 20);
 		contentPane.add(txtFecha);
 		txtFecha.setColumns(10);
-		
+
 		txtanimal = new JTextField();
 		txtanimal.setBounds(79, 32, 86, 20);
 		contentPane.add(txtanimal);
 		txtanimal.setColumns(10);
-		
+
 		txtpeso = new JTextField();
 		txtpeso.setBounds(79, 69, 86, 20);
 		contentPane.add(txtpeso);
 		txtpeso.setColumns(10);
-		
+
 		txtraza = new JTextField();
 		txtraza.setBounds(79, 110, 86, 20);
 		contentPane.add(txtraza);
 		txtraza.setColumns(10);
-		
+
 		txtcolor = new JTextField();
 		txtcolor.setBounds(310, 72, 86, 20);
 		contentPane.add(txtcolor);
 		txtcolor.setColumns(10);
-		
+
 	}
 }

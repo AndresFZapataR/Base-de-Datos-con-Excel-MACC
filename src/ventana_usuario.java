@@ -38,38 +38,38 @@ public class ventana_usuario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setBounds(55, 49, 46, 14);
 		contentPane.add(lblUsuario);
-		
+
 		txt_usuario = new JTextField();
 		txt_usuario.setBounds(128, 46, 134, 20);
 		contentPane.add(txt_usuario);
 		txt_usuario.setColumns(10);
-		
+
 		JLabel lblContrasea = new JLabel("Contrasena:");
 		lblContrasea.setBounds(55, 126, 74, 14);
 		contentPane.add(lblContrasea);
-		
+
 		pss_contrasena = new JPasswordField();
 		pss_contrasena.setBounds(139, 123, 123, 20);
 		contentPane.add(pss_contrasena);
-		
+
 		final DatosUsuario data= new DatosUsuario();
 		final ventana_potreros ventanaPotreros= new ventana_potreros();
 		final ventana_nuevoU ventanacrear = new ventana_nuevoU();
-		
-		
+
+
 		JButton btnIngresar = new JButton("ingresar");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if(data.probarPass()==1) {
 				   JOptionPane.showMessageDialog(null,"Bienvenido usuario");
 				   ventanaPotreros.setVisible(true);
 				   dispose();
-				   
+
 				}
 				else {
 					JOptionPane.showMessageDialog(null,"error");
@@ -78,7 +78,7 @@ public class ventana_usuario extends JFrame {
 		});
 		btnIngresar.setBounds(37, 206, 89, 23);
 		contentPane.add(btnIngresar);
-		
+
 		JButton btnCrear = new JButton("Crear Usuario");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,5 +91,3 @@ public class ventana_usuario extends JFrame {
 	}
 
 }
-
-

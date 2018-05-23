@@ -1,5 +1,4 @@
 
-
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
@@ -27,9 +26,9 @@ public class crear_potrero extends JFrame {
 				}
 			}
 		});
-	
+
 	}
-	
+
 
 	public crear_potrero() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,16 +37,16 @@ public class crear_potrero extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNombrePotrero = new JLabel("Nombre potrero");
 		lblNombrePotrero.setBounds(32, 25, 89, 22);
 		contentPane.add(lblNombrePotrero);
-		
+
 		textField = new JTextField();
 		textField.setBounds(154, 26, 124, 21);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JButton btnCrear = new JButton("CREAR");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -62,11 +61,11 @@ public class crear_potrero extends JFrame {
 		btnCrear.setBounds(118, 93, 89, 23);
 		contentPane.add(btnCrear);
 	}
-	
+
 	public static String getNewPaddock() {
 		String nom = textField.getText();
 		return nom;
 	}
-	
+
 
 }

@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,14 +11,13 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
-
 public class CrearDocExcel {
 
-		
+
 	static final int NUM_COLUMS = 6;
-	
+
 	public static void editarPotrero (String landName, String paddockName, Vector<String> v) {
-		System.out.println(v);
+
 		try {
 			File file = new File(landName);
 			FileInputStream excel = new FileInputStream(file);
@@ -50,29 +48,24 @@ public class CrearDocExcel {
 			e.printStackTrace();
 		}
 	}
-	
-	public static Vector<String> encabezado() {
-		Vector<String> v = new Vector<String>(NUM_COLUMS);
-		v.addElement("No. Animal");
-		v.addElement("Sexo");
-		v.addElement("Peso");
-		v.addElement("Color");
-		v.addElement("Raza");
-		v.addElement("Fecha");
+
+	public static Object[] encabezado() {
+		Object[] v = new Object[NUM_COLUMS];
+		v[0] = (Object) "No Animal";
+		v[0] = (Object)"Sexo";
+		v[0] = (Object)"Peso";
+		v[0] = (Object)"Raza";
+		v[0] = (Object)"Color";
+		v[0] = (Object)"Fecha";
 		return v;
 	}
 
 	public static void crearPotrero(String nameLand,String paddockName) {
-		Vector<String> ers = encabezado();
 		try {
 			FileInputStream file = new FileInputStream(new File(nameLand ));
 			try {
 				XSSFWorkbook book = new XSSFWorkbook(file);
-				Sheet hoja = book.createSheet(paddockName);
-				Row row = hoja.createRow(0);
-				for (int i = 0; i < NUM_COLUMS; i++) {
-					row.createCell(i).setCellValue(ers.get(i));					
-				}
+				book.createSheet(paddockName);
 				FileOutputStream file2 = new FileOutputStream(new File (nameLand));
 				book.write(file2);
 				book.close();
@@ -80,14 +73,14 @@ public class CrearDocExcel {
 				file2.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-			} 
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void deletePaddock(String landName, String paddockName) {
-		
+
 		try {
 			File file = new File(landName);
 			FileInputStream excel = new FileInputStream(file);
@@ -106,6 +99,29 @@ public class CrearDocExcel {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	public static void saveUserData(String user, String password) {
+
+		try {
+			FileInputStream file = new FileInputStream(new File(Principal.NOM_FINCA));
+			try {
+				XSSFWorkbook book = new XSSFWorkbook(file);
+				Sheet hoja = book.getSheetAt(0);
+				Row row = hoja.createRow(0);
+				row.createCell(0).setCellValue(user);
+				row.createCell(1).setCellValue(password);
+				FileOutputStream file2 = new FileOutputStream(new File (Principal.NOM_FINCA));
+				book.write(file2);
+				book.close();
+				file.close();
+				file2.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,8 +1,8 @@
 
-
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -31,7 +31,7 @@ public class ventana_potreros extends JFrame {
 			}
 		});
 	}
-	
+
 	static JComboBox cmbPotrero = new JComboBox();
 
 
@@ -43,26 +43,26 @@ public class ventana_potreros extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblSeleccionePotrero = new JLabel("Seleccione potrero:");
 		lblSeleccionePotrero.setBounds(146, 11, 142, 24);
 		contentPane.add(lblSeleccionePotrero);
-		
-		cmbPotrero.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if (!cmbPotrero.getSelectedItem().toString().equals("")) {
-					final ventana_potrero potreroFinca = new ventana_potrero();
-					potreroFinca.setVisible(true);
-				}
-			}
-			
-		});
-			
+
 		cmbPotrero.setModel(new DefaultComboBoxModel(ReadExcel.getPaddocks(Principal.NOM_FINCA)));
 		cmbPotrero.setBounds(134, 46, 148, 24);
 		contentPane.add(cmbPotrero);
-		
-		
+
+		cmbPotrero.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (!cmbPotrero.getSelectedItem().toString().equals("")) {
+					ventana_potrero potreroFinca = new ventana_potrero();
+					potreroFinca.setVisible(true);
+					dispose();
+				}
+			}
+
+		});
+
 		JButton btnAnadirPotrero = new JButton("AGREGAR POTRERO");
 		btnAnadirPotrero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -73,7 +73,7 @@ public class ventana_potreros extends JFrame {
 		});
 		btnAnadirPotrero.setBounds(49, 175, 135, 24);
 		contentPane.add(btnAnadirPotrero);
-		
+
 		JButton btnEliminarPotrero = new JButton("ELIMINAR POTRERO");
 		btnEliminarPotrero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,21 +85,21 @@ public class ventana_potreros extends JFrame {
 		});
 		btnEliminarPotrero.setBounds(223, 175, 142, 24);
 		contentPane.add(btnEliminarPotrero);
-		
+
 		JButton btnEditarPotrero = new JButton("EDITAR POTRERO");
 		btnEditarPotrero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				final crear_animal crearanimal = new crear_animal ();
 				crearanimal.setVisible(true);
+				dispose();
 			}
 		});
 		btnEditarPotrero.setBounds(135, 215, 135, 23);
 		contentPane.add(btnEditarPotrero);
 	}
-	
+
 	public static String selectedPaddock() {
 		String paddock = cmbPotrero.getSelectedItem().toString();
 		return paddock;
 	}
 }
-
