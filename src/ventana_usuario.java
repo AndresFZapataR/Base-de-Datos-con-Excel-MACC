@@ -86,7 +86,7 @@ public class ventana_usuario extends JFrame {
 				dispose();
 			}
 		});
-		btnCrear.setBounds(293, 206, 89, 23);
+		btnCrear.setBounds(293, 206, 100, 25);
 		contentPane.add(btnCrear);
 	}
 
