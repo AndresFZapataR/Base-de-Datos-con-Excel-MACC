@@ -55,8 +55,13 @@ public class ventana_potreros extends JFrame {
 		cmbPotrero.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (!cmbPotrero.getSelectedItem().toString().equals("")) {
-					ventana_potrero potreroFinca = new ventana_potrero();
-					potreroFinca.setVisible(true);
+					try {
+						ProcessBuilder p = new ProcessBuilder();
+						p.command("cmd", "/c",Principal.NOM_FINCA);
+						p.start();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 					dispose();
 				}
 			}
