@@ -89,7 +89,7 @@ public class crear_animal extends JFrame {
 
 			}
 		});
-		btnAgregar.setBounds(54, 190, 133, 23);
+		btnAgregar.setBounds(54, 190, 150, 25);
 		contentPane.add(btnAgregar);
 
 		JButton btnGuardarCambios = new JButton("GUARDAR CAMBIOS ");
@@ -101,7 +101,7 @@ public class crear_animal extends JFrame {
 				dispose();
 			}
 		});
-		btnGuardarCambios.setBounds(250, 190, 133, 23);
+		btnGuardarCambios.setBounds(250, 190, 150, 25);
 		contentPane.add(btnGuardarCambios);
 
 		JLabel lblFecha = new JLabel("Fecha:");
