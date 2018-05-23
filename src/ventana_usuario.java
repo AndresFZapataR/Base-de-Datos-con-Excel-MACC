@@ -61,7 +61,7 @@ public class ventana_usuario extends JFrame {
 		final ventana_nuevoU ventanacrear = new ventana_nuevoU();
 
 
-		JButton btnIngresar = new JButton("ingresar");
+		JButton btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -79,14 +79,14 @@ public class ventana_usuario extends JFrame {
 		btnIngresar.setBounds(37, 206, 89, 23);
 		contentPane.add(btnIngresar);
 
-		JButton btnCrear = new JButton("Crear Usuario");
+		JButton btnCrear = new JButton("CREAR USUARIO");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventanacrear.setVisible(true);
 				dispose();
 			}
 		});
-		btnCrear.setBounds(293, 206, 100, 25);
+		btnCrear.setBounds(293, 206, 150, 25);
 		contentPane.add(btnCrear);
 	}
 
