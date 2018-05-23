@@ -76,7 +76,7 @@ public class ventana_potreros extends JFrame {
 				dispose();
 			}
 		});
-		btnAnadirPotrero.setBounds(49, 175, 135, 24);
+		btnAnadirPotrero.setBounds(49, 175, 150, 25);
 		contentPane.add(btnAnadirPotrero);
 
 		JButton btnEliminarPotrero = new JButton("ELIMINAR POTRERO");
@@ -88,7 +88,7 @@ public class ventana_potreros extends JFrame {
 				dispose();
 			}
 		});
-		btnEliminarPotrero.setBounds(223, 175, 142, 24);
+		btnEliminarPotrero.setBounds(223, 175, 150, 25);
 		contentPane.add(btnEliminarPotrero);
 
 		JButton btnEditarPotrero = new JButton("EDITAR POTRERO");
