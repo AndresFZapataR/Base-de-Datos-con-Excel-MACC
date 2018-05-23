@@ -76,7 +76,7 @@ public class ventana_usuario extends JFrame {
 				}
 			}
 		});
-		btnIngresar.setBounds(37, 206, 89, 23);
+		btnIngresar.setBounds(37, 206, 89, 25);
 		contentPane.add(btnIngresar);
 
 		JButton btnCrear = new JButton("CREAR USUARIO");
@@ -86,7 +86,7 @@ public class ventana_usuario extends JFrame {
 				dispose();
 			}
 		});
-		btnCrear.setBounds(293, 206, 150, 25);
+		btnCrear.setBounds(200, 206, 150, 25);
 		contentPane.add(btnCrear);
 	}
 
